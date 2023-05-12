@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script>
+      AFRAME.registerComponent("occlusion", {
+        schema: {
+          type: "boolean",
+          default: true,
+        },
+
+        init: function () {
+          this.setOcclusion(this.data);
+        },
+
+        update: function () {
+          console.log(this.data);
+          this.setOcclusion(this.data);
+        },
+
+        setOcclusion: function (val) {
+          // Create occlusion material
+          const material = new THREE.MeshStandardMaterial({
+            colorWrite: !val,
+            color: 0xff0000,
+          });
+
+          // Apply material to object and all children
+          this.el.object3D.traverse((obj) => {
+            obj.material = material;
+          });
+        },
+      });
+
+      function enableOcclusion(val, val2) {
+        let obj = document.getElementById("occlusion");
+        obj.setAttribute("visible", val);
+        obj.setAttribute("occlusion", val2);
+      }
+    </script>
+  </head>
+
+  <body>
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+    >
+      <a-assets>
+        <a-asset-item id="model1" src="modelos/sofa_03_1k.gltf"></a-asset-item>
+        <a-asset-item
+          id="model2"
+          src="modelos/wooden_crate_01_1k.gltf/wooden_crate_01_1k.gltf"
+        ></a-asset-item>
+      </a-assets>
+      <a-camera position="0 0 0"></a-camera>
+
+      <!-- Objeto real con oclusión -->
+
+      <a-box
+        position="0.6265 0.2 -2.81636"
+        scale="0.16 4.27 0.1"
+        material=""
+        geometry=""
+        occlusion
+      ></a-box>
+      <a-marker type="pattern" url="pattern-Disseny-Tarjeta.patt">
+        <a-box
+          position="0 0.25 0"
+          depth="0.5"
+          height="0.5"
+          width="0.5"
+          material="color:red; opacity:0.5"
+        >
+        </a-box>
+        <!-- Modelos 3D -->
+        <a-entity
+          gltf-model="#model1"
+          scale="0.6 0.6 0.6"
+          position="0.33717 0 -3.25002"
+          rotation="0 -25.1 0"
+          shadow=""
+          id="sofa"
+        ></a-entity>
+        <a-entity
+          gltf-model="#model2"
+          scale="0.6 0.6 0.6"
+          position="2.236 0 -1.71337"
+          rotation="0 -40.02 0"
+          shadow=""
+          id="caja"
+        ></a-entity>
+      </a-marker>
+    </a-scene>
+  </body>
+</html>
