@@ -32,11 +32,19 @@
         },
       });
 
-      function enableOcclusion(val, val2) {
-        let obj = document.getElementById("occlusion");
-        obj.setAttribute("visible", val);
-        obj.setAttribute("occlusion", val2);
-      }
+      AFRAME.registerComponent("shadowonly", {
+        init: function () {
+          // Crear material de sombra
+          const material = new THREE.ShadowMaterial({
+            opacity: 0.3,
+          });
+
+          // Aplicar el material al objeto y a todos sus hijos
+          this.el.object3D.traverse((obj) => {
+            obj.material = material;
+          });
+        },
+      });
     </script>
   </head>
 
@@ -49,7 +57,7 @@
         <a-asset-item id="model1" src="modelos/sofa_03_1k.gltf"></a-asset-item>
         <a-asset-item
           id="model2"
-          src="modelos/wooden_crate_01_1k.gltf/wooden_crate_01_1k.gltf"
+          src="modelos/wooden_crate_01_1k/wooden_crate_01_1k.gltf"
         ></a-asset-item>
       </a-assets>
       <a-camera position="0 0 0"></a-camera>
@@ -88,6 +96,48 @@
           rotation="0 -40.02 0"
           shadow=""
           id="caja"
+        ></a-entity>
+
+        <!-- Planos de sombras -->
+        <a-plane
+          id="suelo"
+          shadow="cast: false"
+          shadowonly=""
+          material="color: white; opacity: 0.5"
+          scale="8.95 11.04 20"
+          position="0.426 0 -3.561"
+          rotation="-90 10 0"
+          geometry=""
+        ></a-plane>
+        <a-plane
+          id="pared"
+          shadow="cast: false"
+          shadowonly=""
+          material="color: white; opacity: 0.5"
+          scale="7.1 3.58 3"
+          position="1.5569 1.5 -3.457"
+          rotation="0 10 0"
+          geometry=""
+        ></a-plane>
+
+        <!-- Luces -->
+
+        <a-entity
+          id="luz_blanca_caja"
+          position="2.236 0.35023 -1.713"
+          rotation=""
+          light="type: spot; castShadow: true; color: #615c5c; angle: 48.63; target: #caja"
+          visible=""
+        ></a-entity>
+        <a-entity
+          id="luz_amarilla"
+          position="-0.55184 0.10915 -0.03785"
+          rotation="-37 -20 0"
+          light="castShadow: true; intensity: 3.72; color: #867204; angle: 62.39"
+        ></a-entity>
+        <a-entity
+          id="luz_ambiente"
+          light="type: ambient; intensity: 2.93; color: #ffffff; groundColor: #ffffff; decay: 0; castShadow: true"
         ></a-entity>
       </a-marker>
     </a-scene>
