@@ -24,7 +24,7 @@
         init: function () {
           // Crear material de sombra
           const material = new THREE.ShadowMaterial({
-            opacity: 0.3,
+            opacity: 0.2,
           });
 
           // Aplicar el material al objeto y a todos sus hijos
@@ -48,15 +48,6 @@
 
       <a-camera position="0 0 0" fov="100"></a-camera>
 
-      <!-- Objeto real con oclusión -->
-
-      <a-box
-        position="0.6265 0.2 -2.81636"
-        scale="0.16 4.27 0.1"
-        material=""
-        geometry=""
-        occlusion
-      ></a-box>
 
       <a-marker
         type="pattern"
@@ -64,34 +55,38 @@
         material=""
         arjs-anchor=""
         arjs-hit-testing=""
-        position="0.363 -0.733 -3.462"
-        rotation="84.58200000000001 -2.901 -5.572"
-        scale=""
+        scale="1.000000024900563 1.000000004863368 0.9999999921042753"
         visible=""
+        position="-1.6306036963663875 -2.8469200956838296 -14.018696591193796"
+        rotation="21.42439899154348 2.669424662598287 0.7213230433948727"
       >
+
+      <!-- Objeto real con oclusión -->
         <a-box
-          position="0 0.25 0"
-          depth="0.5"
-          height="0.5"
-          width="0.5"
-          material="color: red; opacity: 0.5"
+          position="3.33077 0.61817 0.58904"
+          scale="0.48 1.34 0.42"
+          material=""
           geometry=""
-        >
+          occlusion=""
+          id="oclusion"
+          rotation=""
+        ></a-box>
+
         </a-box>
         <!-- Modelos 3D -->
         <a-entity
           gltf-model="sofa_03_1k.gltf"
-          scale="0.6 0.6 0.6"
-          position=""
-          rotation="0 -25.1 0"
+          scale="2 2 2"
+          position="0.104 -0.045 -5.459"
+          rotation=""
           shadow=""
           id="sofa"
         ></a-entity>
         <a-entity
           gltf-model="wooden_crate_01_1k.gltf"
-          scale="0.6 0.6 0.6"
-          position=""
-          rotation="0 -40.02 0"
+          scale="3 3 3"
+          position="3.34306 -0.41625 -1.4281"
+          rotation="0 77.26 0"
           shadow=""
           id="caja"
         ></a-entity>
@@ -102,8 +97,8 @@
           shadow="cast: false"
           shadowonly=""
           material="color: white; opacity: 0.5"
-          scale="8.95 11.04 20"
-          position=""
+          scale="10.34 11 20.34"
+          position="0.20993 -0.10532 -2.75841"
           rotation="-90 10 0"
           geometry=""
         ></a-plane>
@@ -112,8 +107,8 @@
           shadow="cast: false"
           shadowonly=""
           material="color: white; opacity: 0.5"
-          scale="7.1 3.58 3"
-          position=""
+          scale="18.45 13.38 11.71"
+          position="-4.71284 -1.20948 -8.72538"
           rotation="0 10 0"
           geometry=""
         ></a-plane>
@@ -121,23 +116,31 @@
         <!-- Luces -->
 
         <a-entity
-          id="luz_blanca_caja"
-          position="2.236 0.35023 -1.713"
-          rotation=""
+          id="luz_blanca"
+          position="-1.96314 9.87355 4.93163"
+          rotation="0 -40.35 0"
           light="type: spot; castShadow: true; color: #615c5c; angle: 48.63"
+          visible=""
+        ></a-entity>
+
+        <a-entity
+          id="luz_blanca_caja"
+          position="0.56296 7.21898 -4.05735"
+          rotation="-38.31 -87.11 50"
+          light="type: spot; castShadow: true; color: #615c5c; angle: 48.28; distance: 10.28"
           visible=""
         ></a-entity>
         <a-entity
           id="luz_amarilla"
-          position="-0.55184 0.10915 -0.03785"
+          position="-4.64891 4.49868 -1.4935"
           rotation="-37 -20 0"
-          light="castShadow: true; intensity: 3.72; color: #867204; angle: 62.39"
+          light="castShadow: true; intensity: 0.54; color: #ffffff; angle: 62.39"
+          visible="false"
         ></a-entity>
       </a-marker>
-
       <a-entity
         id="luz_ambiente"
-        light="type: ambient; intensity: 2.93; color: #ffffff; groundColor: #ffffff"
+        light="type: ambient; intensity: 2.15; color: #ffffff; groundColor: #ffffff"
       ></a-entity>
     </a-scene>
   </body>
