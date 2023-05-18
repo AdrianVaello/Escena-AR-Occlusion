@@ -24,7 +24,7 @@
         init: function () {
           // Crear material de sombra
           const material = new THREE.ShadowMaterial({
-            opacity: 0.2,
+            opacity: 0.15,
           });
 
           // Aplicar el material al objeto y a todos sus hijos
@@ -48,22 +48,20 @@
 
       <a-camera position="0 0 0" fov="100"></a-camera>
 
-
       <a-marker
         type="pattern"
         url="pattern-Disseny-Tarjeta.patt"
         material=""
         arjs-anchor=""
         arjs-hit-testing=""
-        scale="1.000000024900563 1.000000004863368 0.9999999921042753"
+        scale="0.9999999942162809 1.0000000014106127 1.0000000040667032"
         visible=""
-        position="-1.6306036963663875 -2.8469200956838296 -14.018696591193796"
-        rotation="21.42439899154348 2.669424662598287 0.7213230433948727"
+        position="-0.6238818232439289 -2.4232740280031435 -14.573965518384068"
+        rotation="22.681244039313516 -1.6645158871705272 -0.013685047171039827"
       >
-
-      <!-- Objeto real con oclusión -->
+        <!-- Objeto real con oclusión -->
         <a-box
-          position="3.33077 0.61817 0.58904"
+          position="-3.77456 0.04744 -0.19931"
           scale="0.48 1.34 0.42"
           material=""
           geometry=""
@@ -72,12 +70,11 @@
           rotation=""
         ></a-box>
 
-        </a-box>
         <!-- Modelos 3D -->
         <a-entity
           gltf-model="sofa_03_1k.gltf"
           scale="2 2 2"
-          position="0.104 -0.045 -5.459"
+          position="0.104 0 -5.459"
           rotation=""
           shadow=""
           id="sofa"
@@ -85,8 +82,8 @@
         <a-entity
           gltf-model="wooden_crate_01_1k.gltf"
           scale="3 3 3"
-          position="3.34306 -0.41625 -1.4281"
-          rotation="0 77.26 0"
+          position="-4.07111 1 -2.13715"
+          rotation="90 0 0"
           shadow=""
           id="caja"
         ></a-entity>
@@ -98,7 +95,7 @@
           shadowonly=""
           material="color: white; opacity: 0.5"
           scale="10.34 11 20.34"
-          position="0.20993 -0.10532 -2.75841"
+          position="1.40209 0 -2.09726"
           rotation="-90 10 0"
           geometry=""
         ></a-plane>
@@ -107,7 +104,7 @@
           shadow="cast: false"
           shadowonly=""
           material="color: white; opacity: 0.5"
-          scale="18.45 13.38 11.71"
+          scale="18.45 13.38 3.89"
           position="-4.71284 -1.20948 -8.72538"
           rotation="0 10 0"
           geometry=""
@@ -117,30 +114,23 @@
 
         <a-entity
           id="luz_blanca"
-          position="-1.96314 9.87355 4.93163"
-          rotation="0 -40.35 0"
-          light="type: spot; castShadow: true; color: #615c5c; angle: 48.63"
+          position="-4.97043 6.22205 -1.44597"
+          rotation="-20.63 -57.35000000000001 0"
+          light="type: spot; castShadow: true; color: #615c5c; angle: 29.64; distance: 15.91"
           visible=""
         ></a-entity>
-
         <a-entity
           id="luz_blanca_caja"
-          position="0.56296 7.21898 -4.05735"
-          rotation="-38.31 -87.11 50"
-          light="type: spot; castShadow: true; color: #615c5c; angle: 48.28; distance: 10.28"
+          position="-10.80158 3.70309 -1.83894"
+          rotation="-38.31 -102.65 0"
+          light="type: spot; castShadow: true; color: #ffffff; angle: 27.88; distance: 10.28"
           visible=""
         ></a-entity>
-        <a-entity
-          id="luz_amarilla"
-          position="-4.64891 4.49868 -1.4935"
-          rotation="-37 -20 0"
-          light="castShadow: true; intensity: 0.54; color: #ffffff; angle: 62.39"
-          visible="false"
-        ></a-entity>
       </a-marker>
+
       <a-entity
         id="luz_ambiente"
-        light="type: ambient; intensity: 2.15; color: #ffffff; groundColor: #ffffff"
+        light="type: ambient; intensity: 1.7; color: #ffffff; groundColor: #ffffff"
       ></a-entity>
     </a-scene>
   </body>
