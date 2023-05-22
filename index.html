@@ -5,7 +5,8 @@
     <title>Ejemplo de Web de RA con A-Frame</title>
 
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
     <script>
       AFRAME.registerComponent("occlusion", {
         init: function () {
@@ -40,6 +41,7 @@
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+      mindar-image="imageTargetSrc: targets.mind"
     >
       <a-assets>
         <a-asset-item id="model1" src="sofa_03_1k.gltf"></a-asset-item>
@@ -48,17 +50,7 @@
 
       <a-camera position="0 0 0" fov="100"></a-camera>
 
-      <a-marker
-        type="pattern"
-        url="pattern-Disseny-Tarjeta.patt"
-        material=""
-        arjs-anchor=""
-        arjs-hit-testing=""
-        scale="0.9999999942162809 1.0000000014106127 1.0000000040667032"
-        visible=""
-        position="-0.6238818232439289 -2.4232740280031435 -14.573965518384068"
-        rotation="22.681244039313516 -1.6645158871705272 -0.013685047171039827"
-      >
+      <a-entity mindar-image-target="targetIndex: 0">
         <!-- Objeto real con oclusión -->
         <a-box
           position="-3.77456 0.04744 -0.19931"
@@ -126,7 +118,7 @@
           light="type: spot; castShadow: true; color: #ffffff; angle: 27.88; distance: 10.28"
           visible=""
         ></a-entity>
-      </a-marker>
+      </a-entity>
 
       <a-entity
         id="luz_ambiente"
